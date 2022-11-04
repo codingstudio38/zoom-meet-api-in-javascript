@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Zoom Meet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <style>
+        .register {
+            background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+            margin-top: 3%;
+            padding: 3%;
+        }
+        
+        .register-left {
+            text-align: center;
+            color: #fff;
+            margin-top: 4%;
+        }
+        
+        .register-left input {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            width: 60%;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #383d41;
+            margin-top: 30%;
+            margin-bottom: 3%;
+            cursor: pointer;
+        }
+        
+        .register-right {
+            background: #f8f9fa;
+            border-top-left-radius: 10% 50%;
+            border-bottom-left-radius: 10% 50%;
+        }
+        
+        .register-left img {
+            margin-top: 15%;
+            margin-bottom: 5%;
+            width: 60%;
+            -webkit-animation: mover 2s infinite alternate;
+            animation: mover 1s infinite alternate;
+        }
+        
+        @-webkit-keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        @keyframes mover {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .register-left p {
+            font-weight: lighter;
+            padding: 12%;
+            margin-top: -9%;
+        }
+        
+        .register .register-form {
+            padding: 10%;
+            margin-top: 10%;
+        }
+        
+        .btnRegister {
+            float: right;
+            margin-top: 10%;
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            background: #0062cc;
+            color: #fff;
+            font-weight: 600;
+            width: 50%;
+            cursor: pointer;
+        }
+        
+        .register .nav-tabs {
+            margin-top: 3%;
+            border: none;
+            background: #0062cc;
+            border-radius: 1.5rem;
+            width: 28%;
+            float: right;
+        }
+        
+        .register .nav-tabs .nav-link {
+            padding: 2%;
+            height: 34px;
+            font-weight: 600;
+            color: #fff;
+            border-top-right-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+        
+        .register .nav-tabs .nav-link:hover {
+            border: none;
+        }
+        
+        .register .nav-tabs .nav-link.active {
+            width: 100px;
+            color: #0062cc;
+            border: 2px solid #0062cc;
+            border-top-left-radius: 1.5rem;
+            border-bottom-left-radius: 1.5rem;
+        }
+        
+        .register-heading {
+            text-align: center;
+            margin-top: 8%;
+            margin-bottom: -15%;
+            color: #495057;
+        }
+    </style>
+</head>
+
+<body>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <img src="Zoom_logo_PNG1.png" alt="" width="" height="" />
+            </div>
+            <div class="col-md-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Create Zoom Meet</h3>
+                        <div class="row register-form">
+                            <div class="col-md-12">
+                                <form action="#" method="POST" enctype="multipart/form-data" id="apply_form">
+                                    <div class="form-group">
+                                        <label for="start_date">Start Date</label>
+                                        <input type="date" id="start_date" name="start_date" class="form-control" placeholder="Start Date *" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="start_time">Start Time</label>
+                                        <input type="time" id="start_time" name="start_time" class="form-control" placeholder="Start Time *" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="duration">Duration</label>
+                                        <input type="number" class="form-control" placeholder="Duration * in minute" name="duration" id="duration" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="topic">Topic</label>
+                                        <input type="text" class="form-control" placeholder="Topic *" name="topic" id="topic" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="agenda">Agenda</label>
+                                        <textarea name="agenda" id="agenda" placeholder="Agenda *" class="form-control"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" placeholder="Password *" name="password" id="password" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="button" class="btn btn-primary" id="add_Events" name="add_Events" value="Apply" onclick="createMeeting()" />
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+
+    <div class="container">
+        <div class="col-md-12 table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>uuid</th>
+                        <th>id</th>
+                        <th>host id</th>
+                        <th>topic</th>
+                        <th>type</th>
+                        <th>start time</th>
+                        <th>duration</th>
+                        <th>timezone</th>
+                        <th>agenda</th>
+                        <th>created_at</th>
+                        <th>join url</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl_body">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const EMAIL_ID = 'bidyutpolosoft38@gmail.com';
+        const API_KEY = 'cQihs-PHSc6p7iPF3VNl6Q';
+        const API_SECRET = '1f8q8ykuQKIQK1LjyOBG4gNkGdraneIghvoq';
+        const tbl_body = document.getElementById('tbl_body');
+        var API_URL = 'https://www.polosoftech.com/staging/zoom-meet-js/api';
+        $(document).ready(function() {
+            meeting_list();
+        })
+
+        function ResetDate(id, start_time, created_at) {
+            $.ajax({
+                url: `${API_URL}`,
+                type: "POST",
+                data: {
+                    'API_KEY': API_KEY,
+                    'API_SECRET': API_SECRET,
+                    'EMAIL_ID': EMAIL_ID,
+                    'modify_date': "modify_date",
+                    'start_time': start_time,
+                    'created_at': created_at,
+                    'TIMEZONE': Intl.DateTimeFormat().resolvedOptions().timeZone
+                },
+                beforeSend: function() {
+
+                },
+                success: function(data, textStatus, jQxhr) {
+                    let res = JSON.parse(data);
+                    $(`#s_${id}`).html(res.start);
+                    $(`#c_${id}`).html(res.created);
+                }
+            })
+        }
+
+        function meeting_list() {
+            $.ajax({
+                url: `${API_URL}`,
+                type: "POST",
+                data: {
+                    'API_KEY': API_KEY,
+                    'API_SECRET': API_SECRET,
+                    'EMAIL_ID': EMAIL_ID,
+                    'view_data': "view_data",
+                    'TIMEZONE': Intl.DateTimeFormat().resolvedOptions().timeZone
+                },
+                beforeSend: function() {
+
+                },
+                success: function(data, textStatus, jQxhr) {
+                    let res = JSON.parse(data);
+                    let alldata = res.meetings
+                    $(`#tbl_body`).html("");
+                    alldata.forEach((item, key) => {
+                        $(`#tbl_body`).append(`
+        <tr id="${item.id}">
+            <td>${item.uuid}</td>
+            <td>${item.id}</td>
+            <td>${item.host_id}</td>
+            <td>${item.topic}</td>
+            <td>${item.type}</td>
+            <td id="s_${item.id}"></td>
+            <td>${item.duration} Min</td>
+            <td>${item.timezone}</td>
+            <td>${item.agenda}</td>
+            <td id="c_${item.id}"></td>
+            <td><a href="${item.join_url}" target="_blank">join url</a></td>
+            <td><input type="button" onclick="delete_meeting('${item.id}')" class="btn btn-danger" id="delete_${item.id}" name="delete_" value="Delete"></td>
+        </tr>`)
+                        ResetDate(item.id, item.start_time, item.created_at);
+                    });
+                }
+            })
+        }
+
+        function createMeeting() {
+            let start_date = $("#start_date").val();
+            let start_time = $("#start_time").val();
+            let duration = $("#duration").val();
+            let topic = $("#topic").val();
+            let agenda = $("#agenda").val();
+            let password = $("#password").val();
+            if (start_date == "") {
+                alert("Please select data.");
+                return;
+            }
+            if (start_time == "") {
+                alert("Please select  start time.");
+                return;
+            }
+            if (duration == "") {
+                alert("Please enter duration.");
+                return;
+            }
+            if (topic == "") {
+                alert("Please enter topic.");
+                return;
+            }
+            if (agenda == "") {
+                alert("Please enter agenda.");
+                return;
+            }
+            if (password == "") {
+                alert("Please enter password.");
+                return;
+            }
+            $.ajax({
+                url: `${API_URL}`,
+                type: "POST",
+                data: {
+                    'API_KEY': API_KEY,
+                    'API_SECRET': API_SECRET,
+                    'EMAIL_ID': EMAIL_ID,
+                    'TIMEZONE': Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    'add_event': "add_event",
+                    'start_date': start_date,
+                    'start_time': start_time,
+                    'duration': duration,
+                    'topic': topic,
+                    'agenda': agenda,
+                    'password': password
+                },
+                beforeSend: function() {
+                    $("#add_Events").attr("disabled", "disabled");
+                    $("#apply_form").css("opacity", "0.5");
+                },
+                success: function(data, textStatus, jQxhr) {
+                    let res = JSON.parse(data);
+                    $("#add_Events").removeAttr("disabled");
+                    $("#apply_form").css("opacity", "1");
+                    $("#apply_form")[0].reset();
+                    console.clear();
+                    if (res.id === undefined) {
+                        alert("Failed..!");
+                        console.error(res);
+                    } else {
+                        $(`#tbl_body`).append(`
+        <tr id="${res.id}">
+            <td>${res.uuid}</td>
+            <td>${res.id}</td>
+            <td>${res.host_id}</td>
+            <td>${res.topic}</td>
+            <td>${res.type}</td>
+            <td id="s_${res.id}"></td>
+            <td>${res.duration} Min</td>
+            <td>${res.timezone}</td>
+            <td>${res.agenda}</td>
+            <td id="c_${res.id}"></td>
+            <td><a href="${res.join_url}" target="_blank">join url</a></td>
+            <td><input type="button" onclick="delete_meeting('${res.id}')" class="btn btn-danger" id="delete_${res.id}" name="delete_" value="Delete"></td>
+        </tr>
+                    `);
+                        ResetDate(res.id, res.start_time, res.created_at);
+                    }
+                }
+            })
+        }
+
+        function delete_meeting(id) {
+            if (confirm("Are you sure ?")) {
+                $.ajax({
+                    url: `${API_URL}`,
+                    type: "POST",
+                    data: {
+                        'API_KEY': API_KEY,
+                        'API_SECRET': API_SECRET,
+                        'EMAIL_ID': EMAIL_ID,
+                        'delete_event': "delete_event",
+                        'delete_id': id,
+                        'TIMEZONE': Intl.DateTimeFormat().resolvedOptions().timeZone
+                    },
+                    beforeSend: function() {
+
+                    },
+                    success: function(data, textStatus, jQxhr) {
+                        let res = JSON.parse(data);
+                        $(`#${id}`).remove();
+                        //console.log(res);
+                    }
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>
